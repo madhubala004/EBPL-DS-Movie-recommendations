@@ -1,0 +1,26 @@
+from graphviz import Digraph
+
+# Create a Digraph object
+dot = Digraph(format='png')
+dot.attr(rankdir='TB', style='filled', bgcolor='white')
+
+# Define node styles
+node_attr = {'style': 'filled', 'fillcolor': '#E6F2FF', 'shape': 'box', 'fontname': 'Helvetica', 'fontsize': '12'}
+
+# Add nodes
+dot.node('A', 'DATA COLLECTION\nGather relevant data\nfrom various sources', **node_attr)
+dot.node('B', 'CLEANING\nRemove or correct data\nerrors and inconsistencies', **node_attr)
+dot.node('C', 'EDA\nExplore and analyze data\ndistributions and patterns', **node_attr)
+dot.node('D', 'INSIGHT EXTRACTION\nDerive valuable insights\nfrom the data', **node_attr)
+dot.node('E', 'VISUALIZATION\nCreate charts to illustrate\nthe insights', **node_attr)
+dot.node('F', 'REPORTING\nCompile and communicate the findings', **node_attr)
+
+# Add edges
+dot.edge('A', 'B')
+dot.edge('B', 'C')
+dot.edge('C', 'D')
+dot.edge('D', 'E')
+dot.edge('E', 'F')
+
+# Render the graph to a file
+dot.render('amazon_prime_video_workflow', view=True)
